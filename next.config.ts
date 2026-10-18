@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import "./utils/supabase/config";
+import "./utils/clerk/config";
 
 const nextConfig: NextConfig = {
   /* config options here */
