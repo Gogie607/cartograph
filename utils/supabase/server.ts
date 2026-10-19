@@ -3,9 +3,10 @@ import "server-only";
 import { auth } from "@clerk/nextjs/server";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { supabaseConfig } from "./config";
+import type { Database } from "./database.types";
 
 export function createClient() {
-  return createSupabaseClient(
+  return createSupabaseClient<Database>(
     supabaseConfig.url,
     supabaseConfig.publishableKey,
     {

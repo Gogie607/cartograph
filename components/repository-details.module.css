@@ -1,0 +1,21 @@
+.pane { position: absolute; inset: 0; display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0; overflow: hidden; font-size: 11px; }
+.tabs { display: flex; flex: none; min-height: 40px; border-bottom: 1px solid var(--border); }
+.tabs button { flex: 1; padding: 10px 8px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); font-size: 11px; }
+.tabs button[aria-selected="true"] { color: var(--foreground); border-bottom-color: var(--accent); }
+.tabs button:hover { background: var(--hover); }
+.content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.section { padding: 12px 10px; border-bottom: 1px solid var(--border); }
+.section h2, .section h3 { display: flex; align-items: baseline; gap: 8px; margin: 0 3px 8px; font-size: 11px; font-weight: 600; line-height: 1.6; }
+.repositoryName, .folderPath { margin: 0 3px 12px; font-family: var(--font-geist-mono), monospace; font-size: 11px; overflow-wrap: anywhere; }
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5px 10px; margin: 12px 3px 0; line-height: 1.6; }
+.fact { display: contents; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; text-align: right; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.paths { margin: 0; padding: 0; list-style: none; }
+.path { display: flex; align-items: baseline; gap: 8px; width: 100%; padding: 5px 3px; border: 0; border-radius: 2px; color: var(--foreground); background: transparent; text-align: left; font-family: var(--font-geist-mono), monospace; font-size: 10px; line-height: 1.6; }
+.path > :first-child { min-width: 0; overflow-wrap: anywhere; }
+.path:hover, .path[data-hovered="true"] { background: var(--hover); box-shadow: inset 2px 0 var(--accent); }
+.count { margin-left: auto; flex: none; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+.empty, .note { margin: 8px 3px 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.content > .note { margin: 12px 14px; }
+.pane button:focus-visible { outline: 1px solid var(--accent); outline-offset: -1px; }

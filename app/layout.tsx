@@ -50,12 +50,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         >
           <header className="app-header">
-            <Link href="/" className="brand">Cartograph</Link>
+            <Link href="/" className="brand">
+              <svg className="brand-mark" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M5 5v12M5 11h12V5" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M2.5 2.5h5v5h-5zM14.5 2.5h5v5h-5zM2.5 14.5h5v5h-5z" fill="var(--panel)" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+              Cartograph
+            </Link>
             <div className="header-controls">
               <ThemeControl />
               <nav aria-label="Account" className="account-controls">
                 <Suspense fallback={<span className="muted" role="status">Loading account…</span>}>
-                  <AccountControls />
+                  {/* Match the account controls' first browser render to this request's session. */}
+                  <ClerkProvider dynamic>
+                    <AccountControls />
+                  </ClerkProvider>
                 </Suspense>
               </nav>
             </div>

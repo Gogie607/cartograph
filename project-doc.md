@@ -124,8 +124,9 @@ like an improvement. The reason matters more than the refusal.
 - **Queues, containers, workers.** One deployable application. If a repository
   is too large to parse in a request, that is a limit to state honestly, not an
   architecture to build around.
-- **Languages beyond TypeScript and JavaScript.** Not because it's hard, but
-  because getting one language genuinely right is the entire proposition.
+- **Concrete parsers beyond TypeScript and JavaScript.** Language detection and
+  a replaceable parser boundary support future languages and mixed repositories.
+  Unsupported languages are explicitly skipped until a real parser exists.
 
 ## How it works
 

@@ -6,14 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "parse": "node scripts/parse-repository.mts",
+    "check:parser": "node scripts/check-parser.mts",
+    "check:map": "node scripts/check-map.mts",
+    "check:python-parser": "node scripts/check-python-parser.mts",
+    "check:details": "node scripts/check-details.mts"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.17",
+    "@dagrejs/dagre": "^3.1.1",
     "@supabase/supabase-js": "^2.118.0",
+    "@xyflow/react": "^12.12.0",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "ts-morph": "28.0.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

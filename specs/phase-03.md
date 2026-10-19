@@ -15,6 +15,11 @@ connections between them, and be able to prove it's right.
   repository, point outside it, get deliberately excluded, or fail — and when
   it failed, why. Keep examples of the failures, not just a count.
 - The adapter interface, plus the fallback that assumes no framework at all.
+- Detect languages per file, including mixed-language repositories, and dispatch
+  each supported language to its registered parser. TypeScript/JavaScript is
+  the only concrete language parser in this phase.
+- A no-parse fallback for unknown and unsupported languages. Report their files
+  and skip reasons without inventing nodes, imports or connections.
 - A command that runs the parser against a directory, prints what it found, and
   can write the whole result out as a typed data file. Everything built after
   this reads that output, so the shape it writes is a contract.
@@ -36,6 +41,9 @@ connections between them, and be able to prove it's right.
   nodes that do not exist. It never shows on a small demo repository.
 - An import that can't be resolved is reported as unresolved with a reason. It
   is never quietly dropped and never guessed at.
+- Language parsers are replaceable behind a shared data contract. Language
+  detection, repository orchestration and graph calculations do not depend on a
+  language's syntax tree or compiler. Framework adapters remain a separate layer.
 
 ## Acceptance check
 
@@ -54,6 +62,10 @@ connections between them, and be able to prove it's right.
 4. Rename a file an import points at and re-run. Exactly one unresolved import,
    and the output names why.
 5. Write the output to a file and read it back. Types hold.
+6. A mixed TypeScript/Python/unknown fixture selects the TypeScript parser only
+   for supported files and the no-parse fallback for the rest. A Python-only
+   directory returns no nodes or edges, with every file accounted for. Replacing
+   a registered parser changes dispatch without changing the repository walker.
 
 ## Not in this phase
 

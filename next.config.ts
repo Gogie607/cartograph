@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import "./utils/supabase/config";
 import "./utils/clerk/config";
+import "./utils/organizations/config";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -11,7 +12,8 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   turbopack: {
     rules: {
-      "*.css": {
+      // Preserve Next's CSS Module handling for component stylesheets.
+      "globals.css": {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
       },
